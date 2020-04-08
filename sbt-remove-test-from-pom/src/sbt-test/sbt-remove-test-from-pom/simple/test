@@ -1,0 +1,3 @@
+# this test ensures test dependencies are removed if `publishArtifact in test := false`
+> makePomInBaseDirectory
+$ must-mirror gen.pom test.pom
