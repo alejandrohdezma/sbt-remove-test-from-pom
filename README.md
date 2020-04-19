@@ -15,7 +15,7 @@ publishArtifact in Test := true
 Add the following line to your `plugins.sbt` file:
 
 ```sbt
-addSbtPlugin("com.alejandrohdezma" %% "sbt-remove-test-from-pom" % "0.1.0")
+addSbtPlugin("com.alejandrohdezma" %% "sbt-remove-test-from-pom" % "0.0.0")
 ```
 
 [github-action]: https://github.com/alejandrohdezma/sbt-remove-test-from-pom/actions
