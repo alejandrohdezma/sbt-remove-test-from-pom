@@ -16,12 +16,15 @@
 
 package com.alejandrohdezma.sbt.remove.test.from.pom
 
-import scala.xml.transform.{RewriteRule, RuleTransformer}
-import scala.xml.{Elem, Node, NodeSeq}
+import scala.xml.Elem
+import scala.xml.Node
+import scala.xml.NodeSeq
+import scala.xml.transform.RewriteRule
+import scala.xml.transform.RuleTransformer
 
-import sbt.Keys.{pomPostProcess, publishArtifact, sLog}
+import sbt.Keys._
+import sbt._
 import sbt.plugins.JvmPlugin
-import sbt.{AutoPlugin, Def, Plugins, Test}
 
 /**
  * This plugin automatically removes test dependencies from POMs for projects that
