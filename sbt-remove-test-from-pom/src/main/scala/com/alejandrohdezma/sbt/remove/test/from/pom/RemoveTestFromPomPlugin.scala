@@ -36,13 +36,14 @@ object RemoveTestFromPomPlugin extends AutoPlugin {
 
   override def trigger = allRequirements
 
-  override def projectSettings: Seq[Def.Setting[_]] = Seq(
-    pomPostProcess := transformNode {
-      case TestDependency(dependency) if !publishArtifact.in(Test).value =>
-        sLog.value.warn(s"Test dependency $dependency has been omitted by $label")
-        EmptyNodeSeq
-    }
-  )
+  override def projectSettings: Seq[Def.Setting[_]] =
+    Seq(
+      pomPostProcess := transformNode {
+        case TestDependency(dependency) if !publishArtifact.in(Test).value =>
+          sLog.value.warn(s"Test dependency $dependency has been omitted by $label")
+          EmptyNodeSeq
+      }
+    )
 
   @SuppressWarnings(Array("scalafix:DisableSyntax.=="))
   private object TestDependency {
@@ -51,15 +52,16 @@ object RemoveTestFromPomPlugin extends AutoPlugin {
       elem.label == "dependency" &&
         elem.child.exists(child => child.label == "scope" && child.text == "test")
 
-    def unapply(arg: Node): Option[String] = arg match {
-      case e: Elem if isTestDependency(e) =>
-        val organization = e.child.find(_.label == "groupId").map(_.text).mkString
-        val artifact     = e.child.find(_.label == "artifactId").map(_.text).mkString
-        val version      = e.child.find(_.label == "version").map(_.text).mkString
+    def unapply(arg: Node): Option[String] =
+      arg match {
+        case e: Elem if isTestDependency(e) =>
+          val organization = e.child.find(_.label == "groupId").map(_.text).mkString
+          val artifact     = e.child.find(_.label == "artifactId").map(_.text).mkString
+          val version      = e.child.find(_.label == "version").map(_.text).mkString
 
-        Some(s"$organization:$artifact:$version")
-      case _ => None
-    }
+          Some(s"$organization:$artifact:$version")
+        case _ => None
+      }
 
   }
 
