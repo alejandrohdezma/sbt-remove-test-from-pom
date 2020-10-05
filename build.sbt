@@ -1,5 +1,6 @@
-ThisBuild / scalaVersion := "2.12.11"
-ThisBuild / organization := "com.alejandrohdezma"
+ThisBuild / scalaVersion                  := "2.12.12"
+ThisBuild / organization                  := "com.alejandrohdezma"
+ThisBuild / pluginCrossBuild / sbtVersion := "1.2.8"
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
