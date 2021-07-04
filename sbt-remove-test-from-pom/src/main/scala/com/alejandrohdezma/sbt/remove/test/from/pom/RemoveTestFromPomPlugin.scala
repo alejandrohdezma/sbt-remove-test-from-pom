@@ -26,10 +26,9 @@ import sbt.Keys._
 import sbt._
 import sbt.plugins.JvmPlugin
 
-/**
- * This plugin automatically removes test dependencies from POMs for projects that
- * have `publishArtifact in Test` set to `false`.
- */
+/** This plugin automatically removes test dependencies from POMs for projects that
+  * have `publishArtifact in Test` set to `false`.
+  */
 object RemoveTestFromPomPlugin extends AutoPlugin {
 
   override def requires: Plugins = JvmPlugin
